@@ -8,10 +8,18 @@ const Footer = () => (
     <div className="max-w-6xl mx-auto px-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         {/* Brand */}
-        <div>
-          <span className="text-primary text-xl font-bold block mb-2">Shelby Shine</span>
-          <p className="text-sm opacity-70 mb-1">Kentucky's Premier Shine Specialists</p>
-          <p className="text-xs opacity-50">Est. 2017</p>
+        {/* Brand */}
+        <div className="flex flex-col gap-4">
+          <img 
+            src="/assets/logo.png" 
+            alt="Shelby Shine Logo" 
+            className="h-14 w-auto object-contain self-start opacity-90 rounded-[12px] border border-white/10 shadow-sm"
+          />
+          <div>
+            <span className="text-primary text-xl font-bold block mb-1">Shelby Shine</span>
+            <p className="text-sm opacity-60 leading-tight">Kentucky's Premier <br />Shine Specialists</p>
+            <p className="text-[10px] opacity-40 mt-2 font-bold uppercase tracking-widest">Est. 2017</p>
+          </div>
         </div>
 
         {/* Services */}

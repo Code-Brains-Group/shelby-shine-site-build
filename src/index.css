@@ -115,4 +115,21 @@
   .preserve-3d {
     transform-style: preserve-3d;
   }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.12)];
+  }
+
+  .glass-nav {
+    @apply bg-white/40 backdrop-blur-md border-b border-white/10 shadow-[0_4px_16px_rgba(0,0,0,0.06)];
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
 }

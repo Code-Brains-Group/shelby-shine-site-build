@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { WashingMachine, UtensilsCrossed, DoorOpen, PawPrint, Bed, FolderOpen } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useBooking } from "@/context/BookingContext";
 
 const addOns = [
   { icon: WashingMachine, name: "Laundry", desc: "Wash, dry and fold — we handle your laundry from start to finish." },
@@ -12,16 +12,8 @@ const addOns = [
 ];
 
 const AddOns = () => {
-  const [toggled, setToggled] = useState<Set<number>>(new Set());
+  const { selectedAddOns, toggleAddOn } = useBooking();
   const { ref, isVisible } = useScrollAnimation();
-
-  const toggle = (i: number) => {
-    setToggled((prev) => {
-      const next = new Set(prev);
-      next.has(i) ? next.delete(i) : next.add(i);
-      return next;
-    });
-  };
 
   return (
     <section className="py-20 green-tint-bg" ref={ref}>
@@ -32,12 +24,12 @@ const AddOns = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {addOns.map((addon, i) => {
-            const active = toggled.has(i);
+            const active = selectedAddOns.has(i);
             const Icon = addon.icon;
             return (
               <button
                 key={addon.name}
-                onClick={() => toggle(i)}
+                onClick={() => toggleAddOn(i)}
                 className={`flex items-center gap-4 p-5 rounded-xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] text-left transition-all duration-300 ${
                   active ? "border-2 border-primary green-tint-bg" : "bg-card border-2 border-transparent"
                 }`}
